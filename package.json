@@ -49,5 +49,8 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "iniad-api-client": "^0.2.11"
   }
 }
