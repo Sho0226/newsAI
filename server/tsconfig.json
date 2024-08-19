@@ -3,7 +3,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "lib": ["dom"],
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "isolatedModules": true,
     "baseUrl": ".",

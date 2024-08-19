@@ -1,10 +1,9 @@
 import { configDotenv } from 'dotenv';
-import Configuration from 'openai';
+import OpenAI from 'openai';
 
 configDotenv();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-  baseURL: process.env.OPENAI_API_BASE,
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // 環境変数からAPIキーを取得
+  baseURL: process.env.OPENAI_API_BASE, // INIADのAPIベースURLを使用
 });
-asadsdada;

@@ -6,6 +6,7 @@ node_modules/
 *.pem
 tsconfig.tsbuildinfo
 .env
+.env.local
 **/$*.ts
 
 # debug
