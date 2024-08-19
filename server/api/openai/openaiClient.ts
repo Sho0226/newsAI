@@ -1,9 +1,25 @@
-import { configDotenv } from 'dotenv';
-import Configuration from 'openai';
+import OpenAI from 'openai';
 
-configDotenv();
-
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: process.env.OPENAI_API_BASE,
 });
+
+async function main(): Promise<void> {
+  const completion = await openai.chat.completions.create({
+    messages: [
+      {
+        role: 'system',
+        content: 'Hello World',
+      },
+      {
+        role: 'user',
+        content: 'Hello',
+      },
+    ],
+    model: 'gpt-4o-mini',
+  });
+  console.log(completion.choices);
+}
+
+main();
