@@ -8,14 +8,30 @@ const openai = new OpenAI({
   baseURL: process.env.OPENAI_API_BASE, // INIADのAPIベースURLを使用
 });
 
-export async function getChatCompletion(question: string): Promise<string> {
-  const completion = await openai.chat.completions.create({
-    model: 'gpt-4o-mini', // GPT-3.5モデルを使用
-    messages: [
-      { role: 'system', content: 'Hello World' },
-      { role: 'user', content: question },
-    ],
+// ストリーミングのAPIリクエスト
+export async function streamChatCompletion(question: string): Promise<string> {
+  let responseText = '';
+
+  const stream = await openai.chat.completions.create({
+    model: 'gpt-4o-mini',
+    messages: [{ role: 'user', content: question }],
+    stream: true,
   });
 
-  return completion.choices[0].message.content as string; // 応答メッセージを返す
+  for await (const chunk of stream) {
+    responseText += chunk.choices[0]?.delta?.content || '';
+  }
+
+  return responseText; // 最終的にstringを返す
 }
+
+// 実行例
+async function main() {
+  const response = await streamChatCompletion('What is the weather like today?');
+  console.log('Chat completion response:', response);
+
+  console.log('Streaming chat completion:');
+  await streamChatCompletion('Please continue...');
+}
+
+main();
