@@ -51,6 +51,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "iniad-api-client": "^0.2.11"
+    "iniad-api-client": "^0.2.11",
+    "openai": "^4.56.0"
   }
 }
