@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { streamChatCompletion } from './../api/openai/openaiClient';
 import styles from './index.module.css';
+import { streamChatCompletion } from './server/domain/work/event/workEvent.ts';
 
 const ChatComponent = () => {
   const [question, setQuestion] = useState('');
