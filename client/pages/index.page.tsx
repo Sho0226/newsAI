@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { apiClient } from 'utils/apiClient';
+import styles from './index.module.css';
 
 const ChatComponent: React.FC = () => {
   const [question, setQuestion] = useState('');
@@ -17,17 +18,20 @@ const ChatComponent: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.chatContainer}>
       <input
+        className={styles.input}
         type="text"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder="Ask a question"
       />
-      <button onClick={handleAskQuestion}>Send</button>
+      <button className={styles.button} onClick={handleAskQuestion}>
+        Send
+      </button>
       <div>
-        <h3>Response:</h3>
-        <p>{response}</p>
+        <h3 className={styles.responseTitle}>Response:</h3>
+        <p className={styles.responseText}>{response}</p>
       </div>
     </div>
   );
