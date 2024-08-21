@@ -11,6 +11,7 @@ const ChatComponent: React.FC = () => {
       const res = await apiClient.private.works.$post({
         body: { question },
       });
+      console.log('Received response from API:', res.response);
       setResponse(res.response);
     } catch (error) {
       console.error('Error:', error);
